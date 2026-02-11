@@ -17,7 +17,7 @@ def webServer(port=13331):
 
     while True:
         # Establish the connection
-        #print('Ready to serve...')
+        print('Ready to serve...')
         connectionSocket, addr = serverSocket.accept()   # accepting connections
 
         try:
@@ -29,10 +29,7 @@ def webServer(port=13331):
 
             # HTTP response header for a valid request
             header = b"HTTP/1.1 200 OK\r\n"
-            header += b"Server: SimplePythonServer\r\n"
             header += b"Content-Type: text/html; charset=UTF-8\r\n"
-            header += b"Content-Length: " + str(len(filedata)).encode() + b"\r\n"
-            header += b"Connection: close\r\n"
             header += b"\r\n"   # blank line ends the header
 
             # Read file contents
@@ -47,10 +44,7 @@ def webServer(port=13331):
         except Exception as e:
             # Send 404 Not Found response
             header = b"HTTP/1.1 404 Not Found\r\n"
-            header += b"Server: SimplePythonServer\r\n"
             header += b"Content-Type: text/html; charset=UTF-8\r\n"
-            header += b"Content-Length: " + str(len(body)).encode() + b"\r\n"
-            header += b"Connection: close\r\n"
             header += b"\r\n"
 
             body = b"<html><body><h1>404 Not Found</h1></body></html>"
