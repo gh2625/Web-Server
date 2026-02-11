@@ -29,6 +29,7 @@ def webServer(port=13331):
 
             # HTTP response header for a valid request
             header = b"HTTP/1.1 200 OK\r\n"
+            header += b"Server: SimplePythonServer\r\n"
             header += b"Content-Type: text/html; charset=UTF-8\r\n"
             header += b"\r\n"   # blank line ends the header
 
@@ -44,6 +45,7 @@ def webServer(port=13331):
         except Exception as e:
             # Send 404 Not Found response
             header = b"HTTP/1.1 404 Not Found\r\n"
+            header += b"Server: SimplePythonServer\r\n"
             header += b"Content-Type: text/html; charset=UTF-8\r\n"
             header += b"\r\n"
 
